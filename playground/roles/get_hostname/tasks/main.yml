@@ -1,8 +1,7 @@
 ---
-- name: Get server hostname
-  ansible.builtin.command: hostname
-  register: server_hostname
-
-- name: Show RHEL hostname
-  ansible.builtin.debug:
-    msg: "Server hostname is: {{ server_hostname.stdout | trim }}"
+- name: Download a single file from a public GitHub repo
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/gouldt/playground/main/playground/get_hostname.yml
+    dest: /etc/app/get_hostname.yml
+    mode: '0644'
+  delegate_to: localhost  

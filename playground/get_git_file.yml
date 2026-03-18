@@ -1,0 +1,34 @@
+---
+- name: Get hostname
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Download a single file from a public GitHub repo
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/gouldt/playground/main/playground/get_hostname.yml
+        validate_certs: false
+        dest: /tmp/get_hostname.yml
+        mode: '0644'
+  
+    - name: Read and display the content of a local file
+      ansible.builtin.debug:
+        msg: "The file content is: {{ lookup('ansible.builtin.file', '/tmp/get_hostname.yml') }}"
+
+    - name: Download a zip file from a public GitHub repo
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/gouldt/playground/main/playground/ipam.zip
+        validate_certs: false
+        dest: /tmp/ipam.zip
+        mode: '0644'
+
+    - name: Check the status of /tmp/ipam.zip
+      ansible.builtin.stat:
+        path: /tmp/ipam.zip
+      register: config_file_status
+
+    - name: Debug message if the file exists
+      ansible.builtin.debug:
+        msg: "The zip file /tmp/ipam.zip exists!"
+      when: config_file_status.stat.exists
+

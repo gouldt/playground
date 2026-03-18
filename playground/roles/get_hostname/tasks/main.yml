@@ -3,6 +3,6 @@
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/gouldt/playground/main/playground/get_hostname.yml
     validate_certs: false
-    dest: /host/get_hostname.yml
+    dest: /opt/get_hostname.yml
     mode: '0644'
   delegate_to: localhost

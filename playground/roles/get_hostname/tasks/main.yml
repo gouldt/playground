@@ -10,4 +10,4 @@
 - name: Read and display the content of a local file
   ansible.builtin.debug:
     msg: "The file content is: {{ lookup('ansible.builtin.file', '/tmp/get_hostname.yml') }}"
-delegate_to: localhost
+  delegate_to: localhost

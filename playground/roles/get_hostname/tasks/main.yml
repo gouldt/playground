@@ -11,3 +11,4 @@
   ansible.builtin.debug:
     msg: "The file content is: {{ lookup('ansible.builtin.file', '/tmp/get_hostname.yml') }}"
   delegate_to: localhost
+  

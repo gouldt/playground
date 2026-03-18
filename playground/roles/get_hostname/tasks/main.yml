@@ -6,3 +6,8 @@
     dest: /tmp/get_hostname.yml
     mode: '0644'
   delegate_to: localhost
+
+- name: Read and display the content of a local file
+  ansible.builtin.debug:
+    msg: "The file content is: {{ lookup('ansible.builtin.file', '/tmp/get_hostname.yml') }}"
+delegate_to: localhost

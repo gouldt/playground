@@ -1,0 +1,8 @@
+---
+- name: Get server hostname
+  ansible.builtin.command: hostname
+  register: server_hostname
+
+- name: Show RHEL hostname
+  ansible.builtin.debug:
+    msg: "Server hostname is: {{ server_hostname.stdout | trim }}"
